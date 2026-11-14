@@ -30,7 +30,7 @@ def test_login_rejects_wrong_password(page: Page) -> None:
     expect(page.locator('[data-test="error"]')).to_contain_text(
         "Username and password do not match"
     )
-    expect(page).to_have_url("https://www.saucedemo.com/")
+    expect(page.locator('[data-test="login-button"]')).to_be_visible()
 
 
 @pytest.mark.e2e

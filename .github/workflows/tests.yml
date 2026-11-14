@@ -1,0 +1,28 @@
+name: QA E2E SauceDemo
+on:
+  push:
+  pull_request:
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+      - name: Run UI tests
+        run: python -m pytest tests/test_purchase.py -v --browser chromium --screenshot only-on-failure --tracing retain-on-failure --output test-results
+      - name: Attach failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: test-results/
+          if-no-files-found: ignore
