@@ -11,7 +11,7 @@ https://github.com/Hexlet/ru-test-assignments/blob/main/qa/effective-mobile/READ
 ## Выбранный объём (для КТ2, 6–8 часов)
 
 **Делаю целиком:** один E2E-сценарий покупки в https://www.saucedemo.com/:
-вход под `standard_user`, выбор `Sauce Labs Backpack`, корзина,
+вход под `standard\\\_user`, выбор `Sauce Labs Backpack`, корзина,
 заполнение данных, обзор заказа, подтверждение покупки и проверка результата.
 Отдельно проверяю неверный пароль и пустое обязательное поле оформления.
 
@@ -21,11 +21,11 @@ https://github.com/Hexlet/ru-test-assignments/blob/main/qa/effective-mobile/READ
 
 ## Структура
 
-- `tests/test_purchase.py` — E2E тест + негативные проверки.
-- `qa_pages.py` — действия со страницами и стабильные селекторы.
-- `TEST_CASES.md` — шаги и ожидаемые результаты.
-- `REVIEW.md` — замечания с позиции системного аналитика.
-- `.github/workflows/tests.yml` — автоматический прогон в GitHub Actions.
+* `tests/test\\\_purchase.py` — E2E тест + негативные проверки.
+* `qa\\\_pages.py` — действия со страницами и стабильные селекторы.
+* `TEST\\\_CASES.md` — шаги и ожидаемые результаты.
+* `REVIEW.md` — замечания с позиции системного аналитика.
+* `.github/workflows/tests.yml` — автоматический прогон в GitHub Actions.
 
 ## Запуск (Windows PowerShell)
 
@@ -33,14 +33,14 @@ https://github.com/Hexlet/ru-test-assignments/blob/main/qa/effective-mobile/READ
 
 ```powershell
 py -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.\\\\.venv\\\\Scripts\\\\Activate.ps1
 python -m pip install -r requirements.txt
 python -m playwright install chromium
-python -m pytest tests/test_purchase.py -v --browser chromium
+python -m pytest tests/test\\\_purchase.py -v --browser chromium
 ```
 
 Если политика PowerShell не позволяет активировать окружение, можно без
-активации использовать `.\.venv\Scripts\python.exe` вместо `python`.
+активации использовать `.\\\\.venv\\\\Scripts\\\\python.exe` вместо `python`.
 
 ## Запуск (Linux/macOS)
 
@@ -49,7 +49,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m playwright install chromium
-python -m pytest tests/test_purchase.py -v --browser chromium
+python -m pytest tests/test\\\_purchase.py -v --browser chromium
 ```
 
 Для наглядного браузера добавьте `--headed`. Чтобы создать артефакты
@@ -58,27 +58,24 @@ python -m pytest tests/test_purchase.py -v --browser chromium
 ## Проверка и ожидаемые результаты
 
 При доступности SauceDemo ожидаются три успешных теста:
-- `test_purchase_backpack_e2e`: полная покупка и сообщение об успехе.
-- `test_login_rejects_wrong_password`: ошибка авторизации.
-- `test_checkout_requires_first_name`: сообщение о пустом имени.
+
+* `test\\\_purchase\\\_backpack\\\_e2e`: полная покупка и сообщение об успехе.
+* `test\\\_login\\\_rejects\\\_wrong\\\_password`: ошибка авторизации.
+* `test\\\_checkout\\\_requires\\\_first\\\_name`: сообщение о пустом имени.
 
 На GitHub каждый push / pull request запускает `pytest` через Actions.
 **Наличие workflow не гарантирует зелёный запуск**: смотрите фактический
 результат вкладки **Actions**, затем сохраняйте ссылку в отчёте КТ2.
 
-⚠️ Перед сдачей выполните тесты самостоятельно и запишите реальный результат.
-Автоматический прогон на настоящем сайте не подтверждался при подготовке
-этого пакета. Приложение и его интерфейс могут меняться.
-
 ## Критерии и ограничения
 
-- Реальное задание: ссылка приведена выше.
-- Выбранный UI-сценарий описан полностью; GitHub API исключён явно.
-- Неверные/пустые данные проверяются отдельными тестами.
-- README содержит инструкции и ожидаемые результаты.
-- Git-история содержит больше одного содержательного коммита.
-- Перед отправкой нужен **публичный GitHub-репозиторий**, подтверждённый
-  запуск, три замечания смежной роли и хотя бы одно исправление.
+* Реальное задание: ссылка приведена выше.
+* Выбранный UI-сценарий описан полностью; GitHub API исключён явно.
+* Неверные/пустые данные проверяются отдельными тестами.
+* README содержит инструкции и ожидаемые результаты.
+* Git-история содержит больше одного содержательного коммита.
+* Перед отправкой нужен **публичный GitHub-репозиторий**, подтверждённый
+запуск, три замечания смежной роли и хотя бы одно исправление.
 
 ## Как опубликовать историю Git без потери коммитов
 
@@ -86,7 +83,7 @@ python -m pytest tests/test_purchase.py -v --browser chromium
 публичный репозиторий на GitHub (не добавляйте новый README), затем:
 
 ```bash
-git remote add origin https://github.com/ВАШ_ЛОГИН/ИМЯ_РЕПОЗИТОРИЯ.git
+git remote add origin https://github.com/ВАШ\\\_ЛОГИН/ИМЯ\\\_РЕПОЗИТОРИЯ.git
 git branch -M main
 git push -u origin main
 ```
@@ -100,3 +97,52 @@ git push -u origin main
 Автор работы должен разобраться в тестах, выполнить самостоятельный запуск,
 проверить и при необходимости исправить ошибки, зафиксировать свои изменения
 в Git и описать фактические результаты в отчёте — без выдуманных проверок.
+
+
+
+\## Результат локального тестирования
+
+
+
+Python: 3.14.6.
+
+Браузер: Microsoft Edge через Playwright.
+
+
+
+Команда запуска:
+
+```powershell
+
+.\\.venv\\Scripts\\python.exe -m pytest tests/test\_purchase.py -v --browser chromium --browser-channel msedge
+
+```
+
+
+
+Фактический результат:
+
+```text
+
+3 passed, 2 warnings in 4.41s
+
+```
+
+
+
+Все три теста завершились успешно:
+
+\- Полный сценарий покупки товара.
+
+\- Проверка неправильного пароля.
+
+\- Проверка пустого обязательного поля имени.
+
+
+
+Предупреждения касаются фикстур Pytest и записи кеша. На успешность тестов они не повлияли.
+
+
+
+Chromium не удалось скачать из-за ошибки SSL-сертификата. Для локального запуска использован установленный Microsoft Edge.
+
