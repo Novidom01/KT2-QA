@@ -1,5 +1,7 @@
 """Небольшой объект шагов для E2E-сценария SauceDemo."""
 
+import re
+
 from playwright.sync_api import Page, expect
 
 BASE_URL = "https://www.saucedemo.com/"
@@ -57,7 +59,11 @@ class Store:
         """Проверить, что в обзоре заказа остался выбранный товар."""
         expect(self.page.locator(".title")).to_have_text("Checkout: Overview")
         expect(self.page.locator(".cart_item .inventory_item_name")).to_have_text(ITEM_NAME)
-        expect(self.page.locator(".summary_total_label")).to_contain_text("Total:")
+        total_label = self.page.locator(".summary_total_label").inner_text()
+        total = re.fullmatch(r"Total: \$(\d+\.\d{2})", total_label.strip())
+        assert total is not None and float(total.group(1)) > 0, (
+            f"Некорректная итоговая сумма заказа: {total_label!r}"
+        )
 
     def finish(self) -> None:
         """Завершить заказ и проверить подтверждение со стороны сайта."""
